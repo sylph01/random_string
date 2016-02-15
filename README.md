@@ -1,5 +1,8 @@
 # RandomString
 
+[![Hex.pm](http://img.shields.io/hexpm/v/random_string.svg)](https://hex.pm/packages/random_string)
+[![Hex.pm](http://img.shields.io/hexpm/dt/random_string.svg)](https://hex.pm/packages/random_string)
+
 An utility to generate random strings of desired character sets.
 
 ## Usage
