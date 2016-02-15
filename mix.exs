@@ -29,4 +29,19 @@ defmodule RandomString.Mixfile do
   defp deps do
     [{:ex_doc, "~> 0.11", only: :dev}]
   end
+
+  defp description do
+    """
+    Generates random string (or a stream of characters) of desired character sets.
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", "test", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["sylph01"],
+      licenses: ["MIT License"],
+      links: %{"GitHub" => "https://github.com/sylph01/random_string"}
+    ]
+  end
 end
