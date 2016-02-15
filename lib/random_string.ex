@@ -1,5 +1,9 @@
 defmodule RandomString do
-  def take(character_class, n) when is_integer(n) do
+  def take(n) when is_integer(n) do
+    take(n, :alphanumeric)
+  end
+
+  def take(n, character_class) when is_integer(n) do
     stream(character_class) |> Enum.take(n) |> List.to_string
   end
 
@@ -7,7 +11,7 @@ defmodule RandomString do
     stream_without_misleading_characters |> Enum.take(n) |> List.to_string
   end
 
-  def take_without_characters(character_list, n) when is_integer(n) and is_list(character_list) do
+  def take_without_characters(n, character_list) when is_integer(n) and is_list(character_list) do
     stream_without_characters(character_list) |> Enum.take(n) |> List.to_string
   end
 
