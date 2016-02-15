@@ -1,6 +1,6 @@
 defmodule RandomString do
   def take(character_class, n) when is_integer(n) do
-    stream(character_class) |> Enum.take(n)
+    stream(character_class) |> Enum.take(n) |> List.to_string
   end
 
   def stream(character_classes) when is_list(character_classes) do
