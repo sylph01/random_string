@@ -5,7 +5,7 @@ defmodule RandomString do
 
   def stream(character_classes) when is_list(character_classes) do
     list = Enum.reduce(character_classes, [], fn (x, acc) -> acc ++ character_sets[x] end)
-    Stream.repeatedly(fn -> :lists.nth(:random.uniform(length(list)), list) end)
+    Stream.repeatedly(fn -> :lists.nth(:rand.uniform(length(list)), list) end)
   end
 
   def stream(character_class) when is_atom(character_class) do
