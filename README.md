@@ -5,19 +5,30 @@ An utility to generate random strings of desired character sets.
 ## Usage
 
 ```
-iex(1)> RandomString.stream(:alphanumeric)
-#Function<29.52512309/2 in Stream.repeatedly/1>
-iex(2)> RandomString.stream(:alphanumeric) |> Enum.take(20)
-'bs6fTl4pdkIMrJiNcaAi'
-iex(3)> RandomString.stream(:alphanumeric) |> Enum.take(20)
-'dYTDj9ULMC3zzUPyBBCD'
+iex(1)> RandomString.stream(:alphanumeric) |> Enum.take(20) |> List.to_string
+"1lUcpveolhieVEi62Xqj"
+iex(2)> RandomString.stream(:alphanumeric) |> Enum.take(20) |> List.to_string
+"UdnzLywLcCo1ilY33JHA"
+iex(3)> RandomString.stream(:numeric) |> Enum.take(20) |> List.to_string
+"95053150066394237243"
 iex(4)> RandomString.take(:alphanumeric, 20)
-'9ilYp23xkSsYxEYlpnEQ'
+"6qwaPvrBDWtBQEhlcMhc"
 iex(5)> RandomString.take(:alphanumeric, 20)
-'lA6ynZcBl5P751QTvkMF'
+"nQSvf2507h1McQEiQrWF"
+iex(6)> RandomString.take_without_misleading_characters(20)
+"FQ9snpbQFt7cHymWcQMn"
+iex(7)> RandomString.take_without_misleading_characters(20)
+"7WDGwmFeemfJkghqtRww"
+iex(8)> RandomString.take_without_characters('abcdefg', 20)
+"TQrGCOkLlz1Yu0LUw50i"
+iex(9)> RandomString.take_without_characters('abcdefg', 20)
+"3hqW8qKXi9pJY8yxDTjU"
+iex(10)> RandomString.take_without_characters('abcdefg', 20)
+"7w2q5S9G21yYsiOTGmyH"
 ```
 
-Available character classes are: `:alphabetical`, `:alphanumeric`, `:numeric`, `:lowercase`, `:uppercase`.
+- Available character classes are: `:alphabetical`, `:alphanumeric`, `:numeric`, `:lowercase`, `:uppercase`.
+- By default, `take_without_misleading_characters` filter out characters that has a similar look to another character: `01258ijlouvBIOSUVZ`.
 
 ## Installation
 
