@@ -36,12 +36,12 @@ iex(10)> RandomString.take_without_characters(20, 'abcdefg')
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+random_string is [available in Hex](https://hex.pm/packages/random_string)!
 
   1. Add random_string to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:random_string, "~> 0.0.1"}]
+          [{:random_string, "~> 0.1.0"}]
         end
 
   2. Ensure random_string is started before your application:
