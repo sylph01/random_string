@@ -8,7 +8,7 @@ defmodule RandomString do
   end
 
   def take_without_misleading_characters(n) when is_integer(n) do
-    stream_without_misleading_characters |> Enum.take(n) |> List.to_string
+    stream_without_misleading_characters() |> Enum.take(n) |> List.to_string
   end
 
   def take_without_characters(n, character_list) when is_integer(n) and is_list(character_list) do
@@ -16,7 +16,7 @@ defmodule RandomString do
   end
 
   def stream(character_classes) when is_list(character_classes) do
-    list = Enum.reduce(character_classes, [], fn (x, acc) -> acc ++ character_sets[x] end)
+    list = Enum.reduce(character_classes, [], fn (x, acc) -> acc ++ character_sets()[x] end)
     Stream.repeatedly(fn -> :lists.nth(:rand.uniform(length(list)), list) end)
   end
 
@@ -25,7 +25,7 @@ defmodule RandomString do
   end
 
   def stream_without_misleading_characters do
-    stream(:alphanumeric) |> Stream.filter(fn x -> !(Enum.member? misleading_chars, x) end)
+    stream(:alphanumeric) |> Stream.filter(fn x -> !(Enum.member? misleading_chars(), x) end)
   end
 
   def stream_without_characters(character_list) when is_list(character_list) do
