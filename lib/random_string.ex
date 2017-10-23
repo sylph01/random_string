@@ -14,6 +14,7 @@ defmodule RandomString do
 
   @misleading_chars '01258' ++ 'ijlouv' ++ 'BIOSUVZ'
 
+  # public APIs
   def take(n) when is_integer(n) do
     take(n, :alphanumeric)
   end
@@ -30,6 +31,8 @@ defmodule RandomString do
     stream_without_characters(character_list) |> Enum.take(n) |> List.to_string
   end
 
+
+  # definition of streams
   def stream(character_classes) when is_list(character_classes) do
     list = Enum.reduce(character_classes, [], fn (x, acc) -> acc ++ @character_sets[x] end)
     Stream.repeatedly(fn -> :lists.nth(:rand.uniform(length(list)), list) end)
