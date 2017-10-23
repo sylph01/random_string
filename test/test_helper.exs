@@ -1,1 +1,1 @@
-ExUnit.start()
+ExUnit.start(exclude: [:heavy_looping_tests])
