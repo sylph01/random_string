@@ -1,4 +1,12 @@
 defmodule RandomString do
+  @simple_classes %{
+    # {base, number_of_chars}
+    numeric:         {?0, 10},
+    uppercase:       {?A, 26},
+    lowercase:       {?a, 26},
+    printable_chars: {?!, 94}
+  }
+
   @basic_sets %{
     numeric:   (Enum.to_list 48..57),
     uppercase: (Enum.to_list 65..90),
@@ -33,6 +41,12 @@ defmodule RandomString do
 
 
   # definition of streams
+  def stream(character_class) when character_class in [:numeric, :uppercase, :lowercase, :printable_chars] do
+    {base, number_of_chars} = @simple_classes[character_class]
+    # :rand.uniform returns 1 <= X <= N
+    Stream.repeatedly(fn -> base + :rand.uniform(number_of_chars) - 1 end)
+  end
+
   def stream(character_classes) when is_list(character_classes) do
     list = Enum.reduce(character_classes, [], fn (x, acc) -> acc ++ @character_sets[x] end)
     Stream.repeatedly(fn -> :lists.nth(:rand.uniform(length(list)), list) end)

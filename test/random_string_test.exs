@@ -10,11 +10,12 @@ defmodule RandomStringTest do
   end
 
   test "take/2 (with character classes) works" do
-    assert(String.length(RandomString.take(20, :numeric))      == 20)
-    assert(String.length(RandomString.take(20, :uppercase))    == 20)
-    assert(String.length(RandomString.take(20, :lowercase))    == 20)
-    assert(String.length(RandomString.take(20, :alphabetical)) == 20)
-    assert(String.length(RandomString.take(20, :alphanumeric)) == 20)
+    assert(String.length(RandomString.take(20, :numeric))         == 20)
+    assert(String.length(RandomString.take(20, :uppercase))       == 20)
+    assert(String.length(RandomString.take(20, :lowercase))       == 20)
+    assert(String.length(RandomString.take(20, :alphabetical))    == 20)
+    assert(String.length(RandomString.take(20, :alphanumeric))    == 20)
+    assert(String.length(RandomString.take(20, :printable_chars)) == 20)
   end
 
   @tag :heavy_looping_tests
