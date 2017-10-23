@@ -28,9 +28,13 @@ iex(9)> RandomString.take_without_characters(20, 'abcdefg')
 "3hqW8qKXi9pJY8yxDTjU"
 iex(10)> RandomString.take_without_characters(20, 'abcdefg')
 "7w2q5S9G21yYsiOTGmyH"
+
+# new in 0.2.0
+iex(11)> RandomString.take(20, :printable_chars)
+"yXrF?!GC*y,%tXd9rxjU"
 ```
 
-- Available character classes are: `:alphabetical`, `:alphanumeric`, `:numeric`, `:lowercase`, `:uppercase`.
+- Available character classes are: `:alphabetical`, `:alphanumeric`, `:numeric`, `:lowercase`, `:uppercase`, `printable_chars`.
     - If character class is omitted (`RandomString.take/1`), it is defaulted to `:alphanumeric`.
 - By default, `take_without_misleading_characters` filter out characters that has a similar look to another character: `01258ijlouvBIOSUVZ`.
 
@@ -41,7 +45,7 @@ random_string is [available in Hex](https://hex.pm/packages/random_string)!
   1. Add random_string to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:random_string, "~> 0.1.0"}]
+          [{:random_string, "~> 0.2.0"}]
         end
 
   2. Ensure random_string is started before your application:

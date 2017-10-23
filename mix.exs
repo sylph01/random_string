@@ -3,7 +3,7 @@ defmodule RandomString.Mixfile do
 
   def project do
     [app: :random_string,
-     version: "0.1.0",
+     version: "0.2.0",
      elixir: "~> 1.2",
      description: description(),
      package: package(),
