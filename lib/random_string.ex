@@ -59,10 +59,10 @@ defmodule RandomString do
   end
 
   def stream_without_misleading_characters do
-    stream(:alphanumeric) |> Stream.filter(fn x -> !(Enum.member? @misleading_chars, x) end)
+    stream(:alphanumeric) |> Stream.reject(fn x -> Enum.member?(@misleading_chars, x) end)
   end
 
   def stream_without_characters(character_list) when is_list(character_list) do
-    stream(:alphanumeric) |> Stream.filter(fn x -> !(Enum.member? character_list, x) end)
+    stream(:alphanumeric) |> Stream.reject(fn x -> Enum.member?(character_list, x) end)
   end
 end
