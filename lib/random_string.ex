@@ -47,6 +47,32 @@ defmodule RandomString do
     Stream.repeatedly(fn -> base + :rand.uniform(number_of_chars) - 1 end)
   end
 
+  def stream(:alphabetical) do
+    Stream.repeatedly(fn ->
+      base = ?A
+      number_of_chars = 26 * 2
+      offset = :rand.uniform(number_of_chars)
+      if offset > 26 do
+        base + offset + (?a - ?[) - 1
+      else
+        base + offset - 1
+      end
+    end)
+  end
+
+  def stream(:alphanumeric) do
+    Stream.repeatedly(fn ->
+      base = ?0
+      number_of_chars = 26 * 2 + 10
+      offset = :rand.uniform(number_of_chars)
+      cond do
+        offset > 10 + 26 -> base + offset + (?A - ?:) + (?a - ?[) - 1
+        offset > 10      -> base + offset + (?A - ?:) - 1
+        true             -> base + offset - 1
+      end
+    end)
+  end
+
   def stream(character_classes) when is_list(character_classes) do
     list = Enum.reduce(character_classes, [], fn (x, acc) -> acc ++ @character_sets[x] end)
     Stream.repeatedly(fn -> :lists.nth(:rand.uniform(length(list)), list) end)
