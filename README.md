@@ -43,18 +43,31 @@ iex(11)> RandomString.take(20, :printable_chars)
 From 0.2.0, `RandomString.stream/1` does not accept arrays of character classes. This is due to performance tuning in basic character sets.
 If any specific class is needed, please let me know by creating an issue.
 
+## Testing
+
+`mix test` runs tests without following tags:
+
+- `heavy_looping_tests` : Tests that involve heavy looping.
+- `probabilistic`: Tests that may fail with a very low probability.
+
+These tests need to be turned on explicitly, but are usually not necessary except for development uses.
+
 ## Installation
 
 random_string is [available in Hex](https://hex.pm/packages/random_string)!
 
   1. Add random_string to your list of dependencies in `mix.exs`:
 
+        ```
         def deps do
-          [{:random_string, "~> 0.2.0"}]
+          [{:random_string, "~> 0.2.5"}]
         end
+        ```
 
   2. Ensure random_string is started before your application:
 
+        ```
         def application do
           [applications: [:random_string]]
         end
+        ```
