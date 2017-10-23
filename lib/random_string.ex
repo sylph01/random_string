@@ -36,26 +36,24 @@ defmodule RandomString do
 
   def stream(:alphabetical) do
     Stream.repeatedly(fn ->
-      base = ?A
       number_of_chars = 26 * 2
       offset = :rand.uniform(number_of_chars)
       if offset > 26 do
-        base + offset + (?a - ?[) - 1
+        ?a + offset - 27
       else
-        base + offset - 1
+        ?A + offset - 1
       end
     end)
   end
 
   def stream(:alphanumeric) do
     Stream.repeatedly(fn ->
-      base = ?0
       number_of_chars = 26 * 2 + 10
       offset = :rand.uniform(number_of_chars)
       cond do
-        offset > 10 + 26 -> base + offset + (?A - ?:) + (?a - ?[) - 1
-        offset > 10      -> base + offset + (?A - ?:) - 1
-        true             -> base + offset - 1
+        offset > 10 + 26 -> ?a + offset - 37
+        offset > 10      -> ?A + offset - 11
+        true             -> ?0 + offset - 1
       end
     end)
   end
