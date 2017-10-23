@@ -38,6 +38,11 @@ iex(11)> RandomString.take(20, :printable_chars)
     - If character class is omitted (`RandomString.take/1`), it is defaulted to `:alphanumeric`.
 - By default, `take_without_misleading_characters` filter out characters that has a similar look to another character: `01258ijlouvBIOSUVZ`.
 
+## Update in 0.2.0: Removal of user-defined compound character sets
+
+From 0.2.0, `RandomString.stream/1` does not accept arrays of character classes. This is due to performance tuning in basic character sets.
+If any specific class is needed, please let me know by creating an issue.
+
 ## Installation
 
 random_string is [available in Hex](https://hex.pm/packages/random_string)!
