@@ -1,1 +1,1 @@
-ExUnit.start(exclude: [:heavy_looping_tests])
+ExUnit.start(exclude: [:heavy_looping_tests, :probabilistic])

@@ -43,4 +43,16 @@ defmodule RandomStringTest do
       assert(cp in Enum.to_list(48..57) || cp in Enum.to_list(65..90) || cp in Enum.to_list(97..122))
     end)
   end
+
+  @tag :probabilistic
+  test "character class alphabetical generates over all alphabets with sufficiently large length" do
+    l = RandomString.take(10000, :alphabetical) |> String.codepoints |> Enum.uniq
+    assert(length(l) == 26 * 2)
+  end
+
+  @tag :probabilistic
+  test "character class alphanumeric generates over all alphabets and numbers with sufficiently large length" do
+    l = RandomString.take(10000, :alphanumeric) |> String.codepoints |> Enum.uniq
+    assert(length(l) == (26 * 2 + 10))
+  end
 end
