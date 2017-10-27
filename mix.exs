@@ -8,6 +8,10 @@ defmodule RandomString.Mixfile do
      description: description(),
      package: package(),
      deps: deps(),
+
+     # Docs
+     name: "RandomString",
+     source_url: "https://github.com/sylph01/random_string"
    ]
   end
 
