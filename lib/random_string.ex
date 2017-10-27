@@ -22,8 +22,11 @@ defmodule RandomString do
     stream_without_misleading_characters() |> Enum.take(n) |> List.to_string
   end
 
-  def take_without_characters(n, character_list) when is_integer(n) and is_list(character_list) do
-    stream_without_characters(character_list) |> Enum.take(n) |> List.to_string
+  @doc """
+  Take `n` characters from a stream with specified character class (defaults to `:alphanumeric`), excluding characters specified in `character_list`.
+  """
+  def take_without_characters(n, character_list, character_class \\ :alphanumeric) when is_integer(n) and is_list(character_list) do
+    stream_without_characters(character_list, character_class) |> Enum.take(n) |> List.to_string
   end
 
 
@@ -58,11 +61,14 @@ defmodule RandomString do
     end)
   end
 
-  def stream_without_misleading_characters do
-    stream(:alphanumeric) |> Stream.reject(fn x -> Enum.member?(@misleading_chars, x) end)
+  @doc """
+  Returns a [Stream](https://hexdocs.pm/elixir/Stream.html) of characters that does not include "misleading characters".
+  """
+  def stream_without_misleading_characters(character_class \\ :alphanumeric) do
+    stream(character_class) |> Stream.reject(fn x -> Enum.member?(@misleading_chars, x) end)
   end
 
-  def stream_without_characters(character_list) when is_list(character_list) do
-    stream(:alphanumeric) |> Stream.reject(fn x -> Enum.member?(character_list, x) end)
+  def stream_without_characters(character_list, character_class \\ :alphanumeric) when is_list(character_list) do
+    stream(character_class) |> Stream.reject(fn x -> Enum.member?(character_list, x) end)
   end
 end
