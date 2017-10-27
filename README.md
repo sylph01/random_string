@@ -60,7 +60,7 @@ random_string is [available in Hex](https://hex.pm/packages/random_string)!
 
         ```
         def deps do
-          [{:random_string, "~> 0.2.5"}]
+          [{:random_string, "~> 0.3.0"}]
         end
         ```
 
